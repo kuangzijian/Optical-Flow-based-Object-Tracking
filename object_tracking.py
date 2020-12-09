@@ -50,7 +50,7 @@ for f in file_list:
         img = cv2.imread(file_path + file_name)
         gray_frame = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        # draw object tracking bounding box in red rectangle
+        # draw tracker output in red rectangle
         new_points, status, error = cv2.calcOpticalFlowPyrLK(old_gray, gray_frame, old_points, None, **lk_params)
         old_gray = gray_frame.copy()
         old_points = new_points
@@ -83,7 +83,14 @@ for f in file_list:
         dist = np.linalg.norm(gt_ul - ul) + np.linalg.norm(gt_ur - ur) + np.linalg.norm(gt_lr - lr) + np.linalg.norm(gt_ll - ll)
         #print(dist)
         difference += dist
+
         # show results
+        font = cv2.FONT_HERSHEY_DUPLEX
+        font_size = 0.65
+        pos_x = 20
+        img = cv2.putText(img, 'Current video: ' + file_path, (pos_x, 544), font, font_size, (0, 255, 0), 1, cv2.LINE_AA)
+        img = cv2.putText(img, 'Ground truth in green rectangle', (pos_x, 564), font, font_size, (0, 255, 0), 1, cv2.LINE_AA)
+        img = cv2.putText(img, 'Tracker output in red rectangle', (pos_x, 584), font, font_size, (0, 0, 255), 1, cv2.LINE_AA)
         cv2.imshow('frame', img)
         cv2.waitKey(1)
-    print("Sum of Euclidean distance: " + difference)
+    print("Sum of Euclidean distance: " + str(difference))
