@@ -56,21 +56,22 @@ This project focuses on topics:
 1. Clone the repo
 2. pip install -r requirements.txt
 3. Make sure your folder structure is like the screenshot below:
-![structure](https://github.com/kuangzijian/Optical-Flow-based-Object-Tracking/blob/main/demo/folder%20structure.png)
-
 ```
+![structure](https://github.com/kuangzijian/Optical-Flow-based-Object-Tracking/blob/main/demo/folder%20structure.png)
 
 ### Optical Flow based Object Tracking
 ```
 python object_tracking.py 
 
 The output will show both ground truth bounding box and the bounding box created by the object tracker:
-![ouput1](https://github.com/kuangzijian/UAlberta-Multimedia-Master-Program-MM811-2020-Assignment-3/blob/main/images/after.png)
-
+```
+![ouput1](https://github.com/kuangzijian/Optical-Flow-based-Object-Tracking/blob/main/demo/object_tracking%20output1.png)
+```
 The program also save both .npy and .txt files with the bounding box coordinates of the tracked objects in the format: 
 ulx, uly, urx, ury, lrx, lry, llx, lly:
-![ouput2](https://github.com/kuangzijian/UAlberta-Multimedia-Master-Program-MM811-2020-Assignment-3/blob/main/images/after.png)
 ```
+![ouput2](https://github.com/kuangzijian/Optical-Flow-based-Object-Tracking/blob/main/demo/object_tracking%20output2.png)
+
 
 ## Contributing
 
