@@ -10,7 +10,7 @@ file_list = {'bookI': 531,
 
 # Lucas kanade params
 lk_params = dict(winSize=(32, 32),
-                 maxLevel=4,
+                 maxLevel=0,
                  criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
 
 for f in file_list:
