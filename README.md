@@ -56,7 +56,7 @@ This project focuses on topics:
 1. Clone the repo
 2. pip install -r requirements.txt
 3. Make sure your folder structure is like the screenshot below:
-![structure](https://github.com/kuangzijian/UAlberta-Multimedia-Master-Program-MM811-2020-Assignment-3/blob/main/images/after.png)
+![structure](https://github.com/kuangzijian/Optical-Flow-based-Object-Tracking/blob/main/demo/folder%20structure.png)
 
 ```
 
