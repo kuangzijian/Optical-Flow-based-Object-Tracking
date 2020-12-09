@@ -10,7 +10,7 @@ file_list = {'bookI': 531,
 
 # Lucas kanade params
 lk_params = dict(winSize=(32, 32),
-                 maxLevel=0,
+                 maxLevel=4,
                  criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
 
 for f in file_list:
@@ -70,8 +70,6 @@ for f in file_list:
         cv2.polylines(img, [pts], True, (0, 255, 0), 2)
 
         # calculate euclidean distance between ground truth and tracker output
-        #print(ulx, uly, urx, ury, lrx, lry, llx, lly)
-        #print(ground_truth[i])
         gt_ul = np. array((ground_truth[i][0], ground_truth[i][1]), dtype=np.float32)
         ul = np. array((ulx, uly), dtype=np.float32)
         gt_ur = np.array((ground_truth[i][2], ground_truth[i][3]), dtype=np.float32)
@@ -81,7 +79,7 @@ for f in file_list:
         gt_ll = np.array((ground_truth[i][6], ground_truth[i][7]), dtype=np.float32)
         ll = np.array((llx, lly), dtype=np.float32)
         dist = np.linalg.norm(gt_ul - ul) + np.linalg.norm(gt_ur - ur) + np.linalg.norm(gt_lr - lr) + np.linalg.norm(gt_ll - ll)
-        #print(dist)
+
         difference += dist
 
         # show results
@@ -94,3 +92,8 @@ for f in file_list:
         cv2.imshow('frame', img)
         cv2.waitKey(1)
     print("Sum of Euclidean distance: " + str(difference))
+
+    # save both .npy and .txt file with the bounding box coordinates of the tracked objects in the format:
+    # ulx, uly, urx, ury, lrx, lry, llx, lly:
+    np.save('object_tracking_results/' + file_path + '.npy', np.array(tracker_output))
+    np.savetxt('object_tracking_results/' + file_path + '.txt', np.array(tracker_output), fmt='%d')
