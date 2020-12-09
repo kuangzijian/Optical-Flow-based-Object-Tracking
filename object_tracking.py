@@ -61,7 +61,7 @@ for f in file_list:
         tracker_output.append((ulx, uly, urx, ury, lrx, lry, llx, lly))
 
         # draw ground truth in green rectangle
-        gt_ulx, gt_uly = int(float(ground_truth[i][0])), int(float(ground_truth[i][1]))
+        gt_ulx, gt_uly = float(ground_truth[i][0]), float(ground_truth[i][1])
         gt_urx, gt_ury = float(ground_truth[i][2]), float(ground_truth[i][3])
         gt_lrx, gt_lry = float(ground_truth[i][4]), float(ground_truth[i][5])
         gt_llx, gt_lly = float(ground_truth[i][6]), float(ground_truth[i][7])
